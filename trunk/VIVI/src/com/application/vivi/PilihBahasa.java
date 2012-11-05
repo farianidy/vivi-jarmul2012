@@ -20,7 +20,7 @@ public class PilihBahasa extends Activity {
         
         spinnerBhsOrg = (Spinner) findViewById(R.id.spinnerBhsOrg);
         spinnerBhsDest = (Spinner) findViewById(R.id.spinnerBhsDest);
-        btnNext = (Button) findViewById(R.id.buttonBhs);
+        btnNext = (Button) findViewById(R.id.buttonLanjutInput);
         
         btnNext.setOnClickListener(new View.OnClickListener() {
 			

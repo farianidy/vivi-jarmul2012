@@ -23,7 +23,7 @@
         android:entries="@array/pilih_bahasa_pilihan" />
 
     <Button
-        android:id="@+id/buttonBhs"
+        android:id="@+id/buttonLanjutInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
