@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/txtViewBhsOrg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="14dp" />
+
+    <TextView
+        android:id="@+id/textViewBhsDest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtViewBhsOrg"
+        android:layout_alignBottom="@+id/txtViewBhsOrg"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="14dp" />
+
+    <TextView
+        android:id="@+id/txtViewRekam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtViewBhsOrg"
+        android:layout_below="@+id/txtViewBhsOrg"
+        android:layout_marginTop="31dp"
+        android:text="@string/judul_input"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/buttonRekam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/button_rekam" />
+
+</RelativeLayout>

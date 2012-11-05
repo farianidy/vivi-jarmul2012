@@ -1,0 +1,19 @@
+<resources>
+
+    <string name="app_name">VIVI</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_pilih_bahasa">Pilih Bahasa</string>
+    <string name="title_activity_input">Input</string>
+    <string name="title_activity_hasil_terjemahan">Hasil Terjemahan</string><string name="pilih_bahasa_judul">Pilih Bahasa</string>
+
+    <string-array name="pilih_bahasa_pilihan">
+        <item>Indonesia</item>
+        <item>English </item>
+    </string-array>
+
+    <string name="button_lanjut">Selanjutnya</string>
+    
+    <string name="judul_input">Silahkan berbicara</string>
+    <string name="button_rekam">Rekam</string>
+
+</resources>
