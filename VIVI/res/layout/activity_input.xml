@@ -13,7 +13,7 @@
         android:layout_marginTop="14dp" />
 
     <TextView
-        android:id="@+id/textViewBhsDest"
+        android:id="@+id/txtViewBhsDest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/txtViewBhsOrg"
@@ -38,5 +38,14 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/button_rekam" />
+
+    <Button
+        android:id="@+id/buttonLanjutHasil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonRekam"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="@string/button_lanjut" />
 
 </RelativeLayout>
