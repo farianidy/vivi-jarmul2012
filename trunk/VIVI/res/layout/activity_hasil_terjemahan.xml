@@ -22,12 +22,21 @@
         android:layout_marginRight="14dp" />
 
     <TextView
-        android:id="@+id/txtViewKata"
+        android:id="@+id/txtViewHasil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/txtViewBhsOrg2"
         android:layout_below="@+id/txtViewBhsOrg2"
         android:layout_marginTop="24dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/txtViewHasilTerjemahan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtViewHasil"
+        android:layout_below="@+id/txtViewHasil"
+        android:layout_marginTop="22dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

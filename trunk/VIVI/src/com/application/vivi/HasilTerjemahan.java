@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class HasilTerjemahan extends Activity {
 	
-	private String bhsOrg, bhsDest, kata;
+	private String bhsOrg, bhsDest, hasil;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -18,15 +18,17 @@ public class HasilTerjemahan extends Activity {
         Intent i = getIntent();
         bhsOrg = i.getStringExtra("bhsOrg");
         bhsDest = i.getStringExtra("bhsDest");
-        kata = i.getStringExtra("kata");
+        hasil = i.getStringExtra("hasil");
         
         TextView txtViewBhsOrg = (TextView) findViewById(R.id.txtViewBhsOrg2);
         TextView txtViewBhsDest = (TextView) findViewById(R.id.txtViewBhsDest2);
-        TextView txtViewKata = (TextView) findViewById(R.id.txtViewKata);
+        TextView txtViewHasil = (TextView) findViewById(R.id.txtViewHasil);
+        TextView txtViewHasilTerjemahan = (TextView) findViewById(R.id.txtViewHasilTerjemahan);
         
         txtViewBhsOrg.setText(bhsOrg);
         txtViewBhsDest.setText(bhsDest);
-        txtViewKata.setText(kata);
+        txtViewHasil.setText(hasil);
+        txtViewHasilTerjemahan.setText("");
     }
 
     @Override
