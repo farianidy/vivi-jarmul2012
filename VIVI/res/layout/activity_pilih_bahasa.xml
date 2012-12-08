@@ -7,10 +7,10 @@
         android:id="@+id/spinnerBhsOrg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="124dp"
+        android:layout_marginLeft="120dp"
         android:prompt="@string/pilih_bahasa_judul"
-        android:entries="@array/pilih_bahasa_pilihan" />
+        android:entries="@array/pilih_bahasa_dari" />
 
     <Spinner
         android:id="@+id/spinnerBhsDest"
@@ -20,7 +20,7 @@
         android:layout_below="@+id/spinnerBhsOrg"
         android:layout_marginTop="20dp"
         android:prompt="@string/pilih_bahasa_judul"
-        android:entries="@array/pilih_bahasa_pilihan" />
+        android:entries="@array/pilih_bahasa_ke" />
 
     <Button
         android:id="@+id/buttonLanjutInput"
@@ -30,5 +30,23 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="142dp"
         android:text="@string/button_lanjut" />
+
+    <TextView
+        android:id="@+id/labelFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/spinnerBhsOrg"
+        android:layout_alignBottom="@+id/spinnerBhsOrg"
+        android:layout_toLeftOf="@+id/buttonLanjutInput"
+        android:text="From :" />
+
+    <TextView
+        android:id="@+id/labelTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/spinnerBhsDest"
+        android:layout_alignBottom="@+id/spinnerBhsDest"
+        android:layout_alignLeft="@+id/labelFrom"
+        android:text="To :" />
 
 </RelativeLayout>

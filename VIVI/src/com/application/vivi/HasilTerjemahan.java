@@ -56,7 +56,34 @@ public class HasilTerjemahan extends Activity {
         	Translate.setClientId("06091991");
             Translate.setClientSecret("ljuWhXc8GnMmr4yUswoPLYfnxp5ORsiUNFBu+73fWuI=");
             try {
-            	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
+
+            	if("Indonesian".equals(bhsDest))
+            		translatedText = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
+            	else if ("Arabic".equals(bhsDest))
+            		translatedText = Translate.execute(hasil, Language.ENGLISH, Language.ARABIC);
+            	else if ("Danish".equals(bhsDest))
+                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.DANISH);
+            	else if ("Dutch".equals(bhsDest))
+                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.DUTCH);
+            	else if ("French".equals(bhsDest))
+                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.FRENCH);
+            	else if ("German".equals(bhsDest))
+                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.GERMAN);
+            	else if ("Italian".equals(bhsDest))
+                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.ITALIAN);
+            	else if ("Japanese".equals(bhsDest))
+                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.JAPANESE);
+            	else if ("Korean".equals(bhsDest))
+                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.KOREAN);
+            	else if ("Polish".equals(bhsDest))
+                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.POLISH);
+            	else if ("Russian".equals(bhsDest))
+                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.RUSSIAN);
+            	else if ("Spanish".equals(bhsDest))
+                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.SPANISH);
+            	else 
+                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
+            	
             } catch(Exception e) {
             	translatedText = e.toString();
             }

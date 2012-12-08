@@ -6,14 +6,29 @@
     <string name="title_activity_input">Input</string>
     <string name="title_activity_hasil_terjemahan">Hasil Terjemahan</string><string name="pilih_bahasa_judul">Pilih Bahasa</string>
 
-    <string-array name="pilih_bahasa_pilihan">
-        <item>Indonesia</item>
+    <string-array name="pilih_bahasa_ke">
+        <item>Indonesian</item>
         <item>English </item>
+        <item >Arabic</item>
+        <item >Danish</item>
+        <item >Dutch</item>
+        <item >French</item>
+        <item >German</item>
+        <item >Italian</item>
+        <item >Japanese</item>
+        <item >Korean</item>
+        <item >Polish</item>
+        <item >Russian</item>
+        <item >Spanish</item>
     </string-array>
 
     <string name="button_lanjut">Selanjutnya</string>
     
     <string name="judul_input">Silahkan berbicara</string>
     <string name="button_rekam">Rekam</string>
+    <string-array name="pilih_bahasa_dari">
+        <item >English</item>
+        <item >Indonesian</item>
+    </string-array>
 
 </resources>
