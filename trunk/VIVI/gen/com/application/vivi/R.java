@@ -9,7 +9,8 @@ package com.application.vivi;
 
 public final class R {
     public static final class array {
-        public static final int pilih_bahasa_pilihan=0x7f050000;
+        public static final int pilih_bahasa_dari=0x7f050001;
+        public static final int pilih_bahasa_ke=0x7f050000;
     }
     public static final class attr {
     }
@@ -21,7 +22,9 @@ public final class R {
         public static final int buttonLanjutHasil=0x7f080008;
         public static final int buttonLanjutInput=0x7f08000b;
         public static final int buttonRekam=0x7f080007;
-        public static final int menu_settings=0x7f08000c;
+        public static final int labelFrom=0x7f08000c;
+        public static final int labelTo=0x7f08000d;
+        public static final int menu_settings=0x7f08000e;
         public static final int spinnerBhsDest=0x7f08000a;
         public static final int spinnerBhsOrg=0x7f080009;
         public static final int txtViewBhsDest=0x7f080005;
