@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
         android:layout_marginLeft="120dp"
-        android:prompt="@string/pilih_bahasa_judul"
+        android:prompt="@string/judul_pilih_bahasa"
         android:entries="@array/pilih_bahasa_dari" />
 
     <Spinner
@@ -19,7 +19,7 @@
         android:layout_alignLeft="@+id/spinnerBhsOrg"
         android:layout_below="@+id/spinnerBhsOrg"
         android:layout_marginTop="20dp"
-        android:prompt="@string/pilih_bahasa_judul"
+        android:prompt="@string/judul_pilih_bahasa"
         android:entries="@array/pilih_bahasa_ke" />
 
     <Button
@@ -38,7 +38,7 @@
         android:layout_alignBaseline="@+id/spinnerBhsOrg"
         android:layout_alignBottom="@+id/spinnerBhsOrg"
         android:layout_toLeftOf="@+id/buttonLanjutInput"
-        android:text="From :" />
+        android:text="@string/judul_dari" />
 
     <TextView
         android:id="@+id/labelTo"
@@ -47,6 +47,6 @@
         android:layout_alignBaseline="@+id/spinnerBhsDest"
         android:layout_alignBottom="@+id/spinnerBhsDest"
         android:layout_alignLeft="@+id/labelFrom"
-        android:text="To :" />
+        android:text="@string/judul_ke" />
 
 </RelativeLayout>
