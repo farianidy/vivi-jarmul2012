@@ -2,6 +2,10 @@ package com.application.vivi;
 
 import java.util.ArrayList;
 
+import com.memetix.mst.language.Language;
+import com.memetix.mst.translate.Translate;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -15,9 +19,10 @@ import android.widget.Toast;
 
 public class Input extends Activity {
 
-	private String bhsOrg, bhsDest, hasil;
-	private Button btnRekam, btnNext;
 	protected static final int RESULT_SPEECH = 1;
+	
+	private String bhsOrg, bhsDest, hasil, hasilTerjemahan;
+	private Button btnRekam, btnNext;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,23 +45,32 @@ public class Input extends Activity {
         btnRekam.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
-				Intent intent = new Intent(
-						RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+				Intent rekam = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 
-				intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+				rekam.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
 
 				try {
-					startActivityForResult(intent, RESULT_SPEECH);
-					hasil = "";
+					startActivityForResult(rekam, RESULT_SPEECH);
 				} catch (ActivityNotFoundException a) {
-					Toast t = Toast.makeText(getApplicationContext(),
-							"Ops! Your device doesn't support Speech to Text",
-							Toast.LENGTH_SHORT);
-					t.show();
-					hasil = "tes";
+					Toast.makeText(getApplicationContext(),
+							"Oops! Your device doesn't support Speech-to-Text", Toast.LENGTH_SHORT).show();
+					
+					//btnNext.setEnabled(false);
+					hasil = "ini hanya percobaan";
+					hasilTerjemahan = "this is just a test";
 				}
 			}
 		});
+        
+        new TranslateAsync() {
+        	
+        }.execute();
+        
+//      new TranslateAsync() { 
+//      	protected void onPostExecute(Boolean result) {
+//      		txtViewHasilTerjemahan.setText(hasilTerjemahan);
+//      	}
+//  	}.execute();
         
         btnNext.setOnClickListener(new View.OnClickListener() {
 			
@@ -66,9 +80,11 @@ public class Input extends Activity {
 				nextScreen.putExtra("bhsOrg", bhsOrg);
 				nextScreen.putExtra("bhsDest", bhsDest);
 				nextScreen.putExtra("hasil", hasil);
+				nextScreen.putExtra("hasilTerjemahan", hasilTerjemahan);
 				startActivity(nextScreen);
 			}
 		});
+        
     }
 
     @Override
@@ -83,7 +99,7 @@ public class Input extends Activity {
 
 		switch (requestCode) {
 			case RESULT_SPEECH: {
-				if (resultCode == RESULT_OK && null != data) {
+				if (resultCode == RESULT_OK && data != null) {
 					ArrayList<String> text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 					hasil = text.get(0);
 				}
@@ -91,4 +107,49 @@ public class Input extends Activity {
 			}
 		}
 	}
+    
+    class TranslateAsync extends AsyncTask<Void, Integer, Boolean> {
+    	
+        @Override
+        protected Boolean doInBackground(Void... arg0) {
+        	
+        	Translate.setClientId("06091991");
+            Translate.setClientSecret("ljuWhXc8GnMmr4yUswoPLYfnxp5ORsiUNFBu+73fWuI=");
+            
+            try {
+
+            	if("Indonesian".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
+            	else if ("Arabic".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.ARABIC);
+            	else if ("Danish".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.DANISH);
+            	else if ("Dutch".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.DUTCH);
+            	else if ("French".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.FRENCH);
+            	else if ("German".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.GERMAN);
+            	else if ("Italian".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.ITALIAN);
+            	else if ("Japanese".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.JAPANESE);
+            	else if ("Korean".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.KOREAN);
+            	else if ("Polish".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.POLISH);
+            	else if ("Russian".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.RUSSIAN);
+            	else if ("Spanish".equals(bhsDest))
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.SPANISH);
+            	else 
+            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
+            	
+            } catch(Exception e) {
+            	hasilTerjemahan = e.toString();
+            }
+            
+            return true;
+        }
+    }
 }

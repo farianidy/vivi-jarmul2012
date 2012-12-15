@@ -1,20 +1,24 @@
 package com.application.vivi;
 
+import java.util.Locale;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.speech.tts.TextToSpeech;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.memetix.mst.language.Language;
-import com.memetix.mst.translate.Translate;
-import android.os.AsyncTask;
-
-public class HasilTerjemahan extends Activity {
+public class HasilTerjemahan extends Activity implements TextToSpeech.OnInitListener {
 	
-	private String bhsOrg, bhsDest, hasil;
-	public String translatedText, hasil2;
+	protected static final int MY_DATA_CHECK_CODE = 0;
+	
+	private String bhsOrg, bhsDest, hasil, hasilTerjemahan;
+	private TextToSpeech tts;
+	private Button btnBicara;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,22 +29,32 @@ public class HasilTerjemahan extends Activity {
         bhsOrg = i.getStringExtra("bhsOrg");
         bhsDest = i.getStringExtra("bhsDest");
         hasil = i.getStringExtra("hasil");
+        hasilTerjemahan = i.getStringExtra("hasilTerjemahan");
         
         TextView txtViewBhsOrg = (TextView) findViewById(R.id.txtViewBhsOrg2);
         TextView txtViewBhsDest = (TextView) findViewById(R.id.txtViewBhsDest2);
         TextView txtViewHasil = (TextView) findViewById(R.id.txtViewHasil);
-        final TextView txtViewHasilTerjemahan = (TextView) findViewById(R.id.txtViewHasilTerjemahan);
+        TextView txtViewHasilTerjemahan = (TextView) findViewById(R.id.txtViewHasilTerjemahan);
         
         txtViewBhsOrg.setText(bhsOrg);
         txtViewBhsDest.setText(bhsDest);
         txtViewHasil.setText(hasil);
-        new MyAsyncTask() { 
-            protected void onPostExecute(Boolean result) {
-            	txtViewHasilTerjemahan.setText(translatedText);
-            }
-        }.execute();
-
+        txtViewHasilTerjemahan.setText(hasilTerjemahan);
         
+        btnBicara = (Button) findViewById(R.id.buttonBicara);
+        
+        btnBicara.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				if (hasilTerjemahan != null && hasilTerjemahan.length() > 0) {
+					tts.speak(hasilTerjemahan, TextToSpeech.QUEUE_FLUSH, null);
+				}
+			}
+		});
+        
+        Intent check = new Intent();
+		check.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+		startActivityForResult(check, MY_DATA_CHECK_CODE);
         
     }
 
@@ -50,44 +64,52 @@ public class HasilTerjemahan extends Activity {
         return true;
     }
     
-    class MyAsyncTask extends AsyncTask<Void, Integer, Boolean> {
-        @Override
-        protected Boolean doInBackground(Void... arg0) {
-        	Translate.setClientId("06091991");
-            Translate.setClientSecret("ljuWhXc8GnMmr4yUswoPLYfnxp5ORsiUNFBu+73fWuI=");
-            try {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	
+		if (requestCode == MY_DATA_CHECK_CODE) {
+			if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+				// success, create the TTS instance
+				tts = new TextToSpeech(this, this);
+			} 
+			else {
+				// missing data, install it
+				Intent install = new Intent();
+				install.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+				startActivity(install);
+			}
+		}
+	}
 
-            	if("Indonesian".equals(bhsDest))
-            		translatedText = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
-            	else if ("Arabic".equals(bhsDest))
-            		translatedText = Translate.execute(hasil, Language.ENGLISH, Language.ARABIC);
-            	else if ("Danish".equals(bhsDest))
-                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.DANISH);
-            	else if ("Dutch".equals(bhsDest))
-                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.DUTCH);
-            	else if ("French".equals(bhsDest))
-                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.FRENCH);
-            	else if ("German".equals(bhsDest))
-                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.GERMAN);
-            	else if ("Italian".equals(bhsDest))
-                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.ITALIAN);
-            	else if ("Japanese".equals(bhsDest))
-                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.JAPANESE);
-            	else if ("Korean".equals(bhsDest))
-                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.KOREAN);
-            	else if ("Polish".equals(bhsDest))
-                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.POLISH);
-            	else if ("Russian".equals(bhsDest))
-                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.RUSSIAN);
-            	else if ("Spanish".equals(bhsDest))
-                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.SPANISH);
-            	else 
-                	translatedText = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
-            	
-            } catch(Exception e) {
-            	translatedText = e.toString();
-            }
-            return true;
-        }	
+    public void onInit(int status) {
+    	
+		if (status == TextToSpeech.SUCCESS) {
+			
+			Toast.makeText(getApplicationContext(), 
+					"Text-to-Speech engine is initialized", Toast.LENGTH_SHORT).show();
+			
+			if (tts.isLanguageAvailable(Locale.US) == TextToSpeech.LANG_AVAILABLE) {
+				tts.setLanguage(Locale.US);
+			
+				btnBicara.setEnabled(true);
+			
+			//if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED)
+			}
+			else
+				Toast.makeText(getApplicationContext(), "This language is not supported.", Toast.LENGTH_SHORT).show();
+		}
+		else if (status == TextToSpeech.ERROR) {
+			Toast.makeText(getApplicationContext(), 
+					"Error occurred while initializing Text-to-Speech engine", Toast.LENGTH_SHORT).show();
+		}
+	}
+    
+    @Override
+    public void onDestroy() {
+    	// to shut it down
+    	if (tts != null) {
+    		tts.stop();
+    		tts.shutdown();
+    	}
+    	super.onDestroy();
     }
 }
