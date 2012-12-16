@@ -91,10 +91,8 @@ public class HasilTerjemahan extends Activity implements TextToSpeech.OnInitList
 				tts.setLanguage(Locale.US);
 			
 				btnBicara.setEnabled(true);
-			
-			//if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED)
 			}
-			else
+			else //if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED)
 				Toast.makeText(getApplicationContext(), "This language is not supported.", Toast.LENGTH_SHORT).show();
 		}
 		else if (status == TextToSpeech.ERROR) {
