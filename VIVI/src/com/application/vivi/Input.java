@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.memetix.mst.language.Language;
 import com.memetix.mst.translate.Translate;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -56,15 +55,13 @@ public class Input extends Activity {
 							"Oops! Your device doesn't support Speech-to-Text", Toast.LENGTH_SHORT).show();
 					
 					//btnNext.setEnabled(false);
-					hasil = "ini hanya percobaan";
+					hasil = "this is just a test";
 					hasilTerjemahan = "this is just a test";
 				}
 			}
 		});
         
-        new TranslateAsync() {
-        	
-        }.execute();
+        translate();
         
 //      new TranslateAsync() { 
 //      	protected void onPostExecute(Boolean result) {
@@ -108,48 +105,86 @@ public class Input extends Activity {
 		}
 	}
     
-    class TranslateAsync extends AsyncTask<Void, Integer, Boolean> {
-    	
-        @Override
-        protected Boolean doInBackground(Void... arg0) {
-        	
-        	Translate.setClientId("06091991");
-            Translate.setClientSecret("ljuWhXc8GnMmr4yUswoPLYfnxp5ORsiUNFBu+73fWuI=");
-            
-            try {
+    public void translate() {
+    	Translate.setClientId("06091991");
+        Translate.setClientSecret("ljuWhXc8GnMmr4yUswoPLYfnxp5ORsiUNFBu+73fWuI=");
+        
+        try {
 
-            	if("Indonesian".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
-            	else if ("Arabic".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.ARABIC);
-            	else if ("Danish".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.DANISH);
-            	else if ("Dutch".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.DUTCH);
-            	else if ("French".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.FRENCH);
-            	else if ("German".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.GERMAN);
-            	else if ("Italian".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.ITALIAN);
-            	else if ("Japanese".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.JAPANESE);
-            	else if ("Korean".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.KOREAN);
-            	else if ("Polish".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.POLISH);
-            	else if ("Russian".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.RUSSIAN);
-            	else if ("Spanish".equals(bhsDest))
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.SPANISH);
-            	else 
-            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
-            	
-            } catch(Exception e) {
-            	hasilTerjemahan = e.toString();
-            }
-            
-            return true;
+        	if("Indonesian".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
+        	else if ("Arabic".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.ARABIC);
+        	else if ("Danish".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.DANISH);
+        	else if ("Dutch".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.DUTCH);
+        	else if ("French".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.FRENCH);
+        	else if ("German".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.GERMAN);
+        	else if ("Italian".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.ITALIAN);
+        	else if ("Japanese".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.JAPANESE);
+        	else if ("Korean".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.KOREAN);
+        	else if ("Polish".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.POLISH);
+        	else if ("Russian".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.RUSSIAN);
+        	else if ("Spanish".equals(bhsDest))
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.SPANISH);
+        	else 
+        		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
+        	
+        } catch(Exception e) {
+        	hasilTerjemahan = e.toString();
         }
     }
+    
+//    class TranslateAsync extends AsyncTask<Void, Integer, Boolean> {
+//    	
+//        @Override
+//        protected Boolean doInBackground(Void... arg0) {
+//        	
+//        	Translate.setClientId("06091991");
+//            Translate.setClientSecret("ljuWhXc8GnMmr4yUswoPLYfnxp5ORsiUNFBu+73fWuI=");
+//            
+//            try {
+//
+//            	if("Indonesian".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
+//            	else if ("Arabic".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.ARABIC);
+//            	else if ("Danish".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.DANISH);
+//            	else if ("Dutch".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.DUTCH);
+//            	else if ("French".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.FRENCH);
+//            	else if ("German".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.GERMAN);
+//            	else if ("Italian".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.ITALIAN);
+//            	else if ("Japanese".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.JAPANESE);
+//            	else if ("Korean".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.KOREAN);
+//            	else if ("Polish".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.POLISH);
+//            	else if ("Russian".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.RUSSIAN);
+//            	else if ("Spanish".equals(bhsDest))
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.SPANISH);
+//            	else 
+//            		hasilTerjemahan = Translate.execute(hasil, Language.ENGLISH, Language.INDONESIAN);
+//            	
+//            } catch(Exception e) {
+//            	hasilTerjemahan = e.toString();
+//            }
+//            
+//            return true;
+//        }
+//    }
 }
