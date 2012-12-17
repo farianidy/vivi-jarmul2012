@@ -39,12 +39,4 @@
         android:layout_marginTop="22dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/buttonBicara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/txtViewHasilTerjemahan"
-        android:layout_alignRight="@+id/txtViewBhsDest2"
-        android:text="@string/button_bicara" />
-
 </RelativeLayout>
