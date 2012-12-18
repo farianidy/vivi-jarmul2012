@@ -1,42 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
 
     <TextView
         android:id="@+id/txtViewBhsOrg2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="14dp" />
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/txtViewBhsDest2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/txtViewBhsOrg2"
-        android:layout_alignBottom="@+id/txtViewBhsOrg2"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="14dp" />
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/txtViewHasil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtViewBhsOrg2"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/txtViewBhsOrg2"
-        android:layout_marginTop="24dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/txtViewHasilTerjemahan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtViewHasil"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/txtViewHasil"
-        android:layout_marginTop="22dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <Button
+        android:id="@+id/buttonBicara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtViewBhsDest2"
+        android:layout_alignRight="@+id/txtViewHasilTerjemahan"
+        android:layout_alignParentRight="true"
+        android:text="@string/button_bicara" />
+
+    <ListView
+        android:id="@+id/lviewImages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dip" 
+        android:layout_below="@+id/txtViewHasilTerjemahan">
+    </ListView>
 
 </RelativeLayout>
