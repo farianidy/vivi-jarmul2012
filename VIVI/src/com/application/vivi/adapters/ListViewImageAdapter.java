@@ -21,59 +21,59 @@ import com.application.vivi.R;
 import com.application.vivi.utils.ImageLoader;
 
 public class ListViewImageAdapter extends BaseAdapter {
-    
+
 	private Activity activity;
 	public ArrayList<Object> listImages;
 	private static LayoutInflater inflater=null;
 	public ImageLoader imageLoader; 
-	
-    public ListViewImageAdapter(Activity a, ArrayList<Object> listImages) {
-        activity = a;
-        this.listImages = listImages;
-        inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        imageLoader=new ImageLoader(activity.getApplicationContext());
-    }
 
-    public int getCount() {
-        return listImages.size();
-    }
+	public ListViewImageAdapter(Activity a, ArrayList<Object> listImages) {
+		activity = a;
+		this.listImages = listImages;
+		inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		imageLoader=new ImageLoader(activity.getApplicationContext());
+	}
 
-    public Object getItem(int position) {
-        //return position;
-    	return listImages.get(position);
-    }
+	public int getCount() {
+		return listImages.size();
+	}
 
-    public long getItemId(int position) 
-    {
-    	return position;
-    }
-    
-    public static class ViewHolder{
-    	public ImageView imgViewImage;
-    	public TextView txtViewTitle;
-    	
-    }
+	public Object getItem(int position) {
+		//return position;
+		return listImages.get(position);
+	}
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-    	View vi=convertView;
-    	ViewHolder holder;
+	public long getItemId(int position) 
+	{
+		return position;
+	}
+
+	public static class ViewHolder{
+		public ImageView imgViewImage;
+		public TextView txtViewTitle;
+
+	}
+
+	public View getView(int position, View convertView, ViewGroup parent) {
+		View vi=convertView;
+		ViewHolder holder;
 		if(convertView==null){
 			vi = inflater.inflate(R.layout.listview_row, null);
 			holder=new ViewHolder();
-			
+
 			holder.imgViewImage=(ImageView)vi.findViewById(R.id.imageView01);
 			holder.txtViewTitle=(TextView)vi.findViewById(R.id.textView1);
-			
+
 			vi.setTag(holder);
 		}
 		else
 			holder=(ViewHolder)vi.getTag();
-		
+
 		GoogleImageBean imageBean = (GoogleImageBean) listImages.get(position);
 		holder.imgViewImage.setTag(imageBean.getThumbUrl());
 		imageLoader.DisplayImage(imageBean.getThumbUrl(), activity, holder.imgViewImage);
-		
+
 		holder.txtViewTitle.setText(Html.fromHtml(imageBean.getTitle()));
 		return vi;
-    }
+	}
 }

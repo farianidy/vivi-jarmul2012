@@ -42,18 +42,36 @@ public class Input extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(
 						RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-
-				intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+				
+				if (bhsOrg.equals("Chinese Simplified"))
+					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "zh-CN");
+				else if (bhsOrg.equals("Chinese Traditional"))
+					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "zh-TW");
+				else if (bhsOrg.equals("English"))
+					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+				else if (bhsOrg.equals("French"))
+					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "fr");
+				else if (bhsOrg.equals("German"))
+					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "de");
+				else if (bhsOrg.equals("Indonesian"))
+					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "id");
+				else if (bhsOrg.equals("Italian"))
+					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "it");
+				else if (bhsOrg.equals("Japanese"))
+					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "ja");
+				else if (bhsOrg.equals("Korean"))
+					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "ko");
+				else
+					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 
 				try {
 					startActivityForResult(intent, RESULT_SPEECH);
-					hasil = "";
 				} catch (ActivityNotFoundException a) {
 					Toast t = Toast.makeText(getApplicationContext(),
 							"Ops! Your device doesn't support Speech to Text",
 							Toast.LENGTH_SHORT);
 					t.show();
-					hasil = "tes";
+					btnNext.setEnabled(false);
 				}
 			}
 		});
@@ -62,7 +80,6 @@ public class Input extends Activity {
 			
 			public void onClick(View v) {
 				Intent nextScreen = new Intent();
-				//nextScreen.setClass(getApplicationContext(), HasilTerjemahan.class);
 				nextScreen.setClass(getApplicationContext(), Hasil.class);
 				nextScreen.putExtra("bhsOrg", bhsOrg);
 				nextScreen.putExtra("bhsDest", bhsDest);
@@ -88,6 +105,8 @@ public class Input extends Activity {
 					ArrayList<String> text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 					hasil = text.get(0);
 				}
+				else
+					btnNext.setEnabled(false);
 				break;
 			}
 		}
