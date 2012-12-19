@@ -2,30 +2,37 @@
 
     <string name="app_name">VIVI</string>
     <string name="menu_settings">Settings</string>
-    <string name="cache_dirname">GoogleImgApp_Cache</string><string name="judul_pilih_bahasa">Pilih Bahasa</string>
+    <string name="cache_dirname">GoogleImgApp_Cache</string>
+    <string name="judul_pilih_bahasa">Pilih Bahasa</string>
+    <string name="judul_dari">Dari:</string>
+    <string name="judul_ke">Ke:</string>
+    <string name="judul_input">Silahkan berbicara</string>
 
-    <string name="judul_dari">Dari:</string><string name="judul_ke">Ke:</string><string name="judul_input">Silahkan berbicara</string><string-array name="pilih_bahasa_dari">
-        <item>Chinese Simplified</item><item>Chinese Traditional</item><item>English</item><item >French</item><item >German</item><item>Indonesian</item><item >Italian</item><item >Japanese</item><item >Korean</item>
-        
-    </string-array><string-array name="pilih_bahasa_ke">
-        <item>Chinese Simplified</item><item>Chinese Traditional</item><item>English </item>
-        <item >French</item>
-        <item >German</item>
-        <item >Italian</item>
-        <item >Japanese</item>
-        <item >Korean</item>
-        
-        
+    <string-array name="pilih_bahasa_dari">
+        <item>Chinese Simplified</item>
+        <item>Chinese Traditional</item>
+        <item>English</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Indonesian</item>
+        <item>Italian</item>
+        <item>Japanese</item>
+        <item>Korean</item>
+    </string-array>
+    <string-array name="pilih_bahasa_ke">
+        <item>Chinese Simplified</item>
+        <item>Chinese Traditional</item>
+        <item>English </item>
+        <item>French</item>
+        <item>German</item>
+        <item>Italian</item>
+        <item>Japanese</item>
+        <item>Korean</item>
     </string-array>
 
-    <string name="button_lanjut">Selanjutnya</string>
-    
-    
-    <string name="button_rekam">Rekam</string><string name="button_bicara">Bicara</string>
-    
-    
-    
-    
+    <string name="button_pengaturan_bahasa">Atur Bahasa</string><string name="button_lanjut">Selanjutnya</string>
+    <string name="button_rekam">Rekam</string>
+    <string name="button_bicara">Bicara</string>
     
 
 </resources>
