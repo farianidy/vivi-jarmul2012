@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/background3"
     android:orientation="vertical"
     android:padding="10dp" >
 
@@ -39,10 +40,10 @@
         android:id="@+id/buttonBicara"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtViewBhsDest2"
-        android:layout_alignRight="@+id/txtViewHasilTerjemahan"
         android:layout_alignParentRight="true"
-        android:text="@string/button_bicara" />
+        android:layout_alignRight="@+id/txtViewHasilTerjemahan"
+        android:layout_below="@+id/txtViewBhsDest2"
+        android:background="@drawable/spelling_but" />
 
     <ListView
         android:id="@+id/lviewImages"

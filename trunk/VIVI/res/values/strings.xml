@@ -30,9 +30,10 @@
         <item>Korean</item>
     </string-array>
 
-    <string name="button_pengaturan_bahasa">Atur Bahasa</string><string name="button_lanjut">Selanjutnya</string>
+    <string name="button_pengaturan_bahasa">Atur Bahasa</string>
+    <string name="button_lanjut">Selanjutnya</string>
     <string name="button_rekam">Rekam</string>
     <string name="button_bicara">Bicara</string>
-    
+    <string name="title_activity_awal">Awal</string>
 
 </resources>
