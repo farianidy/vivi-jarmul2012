@@ -1,0 +1,1 @@
+VIVI (VIsual Vocabulary learnIng), merupakan aplikasi pembelajaran kosakata multi bahasa yang diperuntukkan anak-anak sebagai Final Project Jaringan Multimedia 2012
